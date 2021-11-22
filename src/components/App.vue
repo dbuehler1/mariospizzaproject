@@ -6,10 +6,10 @@
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item col-lg-2">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <router-link to="/home">Home</router-link>
             </li>
             <li class="nav-item col-lg-2">
-              <a class="nav-link disabled">Menu</a>
+              <router-link to="/menu">Menu</router-link>
             </li>
             <li class="nav-item col-mlg-2">
               <a class="nav-link disabled">Cart <span class="badge bg-secondary">{{myCart.length}}</span> </a>
@@ -24,8 +24,9 @@
 
 
     </nav>
-    <Home></Home>
-    <Menu v-on:passToApp="myCart.addItem($event)" :my-cart="myCart"></Menu>
+    <router-view v-on:passToApp="myCart.addItem($event)" :my-cart="myCart"></router-view>
+<!--    <Home></Home>-->
+<!--    <Menu ></Menu>-->
 
 
 
@@ -35,16 +36,16 @@
 <script>
 
 
-import Home from "@/components/Home";
-import Menu from "@/components/Menu";
+// import Home from "@/components/Home";
+// import Menu from "@/components/Menu";
 import Cart from "@/vue-models/Cart"
 
 export default {
   name: 'App',
   components: {
 
-    Menu,
-    Home
+    // Menu,
+    // Home
 
   },
   methods : {
