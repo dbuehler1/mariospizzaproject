@@ -5,26 +5,29 @@
 
 
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item col-lg-2">
+            <li class="nav-item col-lg-2 p-2">
               <router-link to="/home">Home</router-link>
             </li>
-            <li class="nav-item col-lg-2">
+            <li class="nav-item col-lg-2 p-2">
               <router-link to="/menu">Menu</router-link>
             </li>
-            <li class="nav-item col-mlg-2">
-              <a class="nav-link disabled">Cart <span class="badge bg-secondary">{{myCart.length}}</span> </a>
+            <li class="nav-item col-mlg-2 p-2">
+              <router-link to="/cart">Cart <span class="badge bg-light">{{myCart.length}}</span> </router-link>
             </li>
-            <li class="nav-item col-lg-2">
+            <li class="nav-item col-lg-2 p-2">
               <a class="nav-link disabled">Order</a>
             </li>
-            <li class="nav-item col-lg-2">
+            <li class="nav-item col-lg-2 p-2">
               <a class="nav-link disabled">Contact</a>
             </li>
           </ul>
 
 
-    </nav>
-    <router-view v-on:passToApp="myCart.addItem($event)" :my-cart="myCart"></router-view>
+    </nav><br>
+<!--    //Pass once, rename to be the same-->
+    <router-view v-on:passToApp="myCart.addItem($event)"
+                 v-on:addPizza="myCart.addItem($event)"
+                 :my-cart="myCart" :cart="myCart"></router-view>
 <!--    <Home></Home>-->
 <!--    <Menu ></Menu>-->
 

@@ -3,6 +3,7 @@ function MenuItems(name, options, description, price){
     this.options = options;
     this.description = description;
     this.price = price;
+    this.selectedOption='';
 
     //return this;
 }

@@ -10,6 +10,9 @@ function Cart(){
         cart.splice(cart.indexOf(item), 1);
         return this;
     }
+    cart.setSelectedOption = function(item, option) {
+        cart[cart.indexOf(item)].selectedOption = option;
+    }
     return cart;
 }
 export default Cart;

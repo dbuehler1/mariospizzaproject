@@ -8,6 +8,7 @@
       <div class="row" v-if="this.item.options[0] !== 'N/A'">
 
         <options-radios class="col-6" v-for="(option, o) in this.item.options"
+                        :item="item"
                         :option="option"
                         :identity="item.name"
                         :key="o">
@@ -24,9 +25,9 @@
       <span>Price: ${{this.item.price}}</span><br>
     </div>
 
-    <button class="btn btn-success" @click="$emit('passToMenu', item), $emit('updateTotal')"
+      <button class="btn btn-success" @click="$emit('passToMenu', item), $emit('updateTotal')">Add to Cart</button>
 
-    >Add to Cart</button>
+
   </div>
 
 </div>
