@@ -8,7 +8,6 @@
 
           <menu-item class="col-3 p-2" v-for="(item, i) in menu"
                      v-on:passToMenu="$emit('passToApp', $event)"
-                     v-on:updateTotal="myTotal"
                      :item="item"
                      :key="i"
           ></menu-item>
@@ -21,10 +20,16 @@
     <div class="col-lg-3">
       <h2 class="sectionHeader bg-warning p-3">Your cart</h2>
       <cart-list class="cartComp" :my-cart="myCart"
-                 v-on:removeCartItem="myCart.removeItem($event)" :total="total"
-                  v-on:deletedItemPrice="myTotal">
+                 v-on:removeCartItem="$emit('removeItem', $event)" :total="total">
       </cart-list>
+
     </div>
+    <div class="pl-3">
+      <router-link to="/pizzas">
+        <button class=" checkout btn btn-success">Build a Pizza  <i class="fas fa-tools"></i></button>
+      </router-link>
+    </div>
+
   </div>
 
 </template>
@@ -42,18 +47,9 @@ name: "Menu",
 
   props : {
     myCart : Array,
+    total: Number,
   },
   methods : {
-    myTotal() {
-      this.total = 0;
-      this.myCart.forEach((item) => {
-        // console.log(item);
-          this.total += item.price;
-          console.log('price', item.price);
-          console.log('total', this.total);
-      } )
-      // console.log(this.total);
-    }
 
   },
   data() {
@@ -73,7 +69,7 @@ name: "Menu",
           // .addItem(new MenuItems('test eleven', 'N/A', 'N/A', 15.25)),
 
 
-      total : 0,
+
           // .addItem(new MenuItems('Garlic Bread', 'N/A', 'N/A', 3.25))
     }
   }

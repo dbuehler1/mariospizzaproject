@@ -18,7 +18,8 @@ name: "PizzaToppings",
 
 <style scoped>
 .toppings {
-  background-color: lightgray;
+  background-color: white;
+  border-radius: 5rem;
 }
 .toppings :hover{
   background-color: darkgoldenrod;

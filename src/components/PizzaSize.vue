@@ -1,6 +1,6 @@
 <template>
   <div class="pizzaSize col-md-2">
-    <div class="border border-dark rounded-circle d-inline-block" @click="$emit('sizeSelect', pizzaSize)" style="height: 10rem; width: 10rem; text-align: center; padding-top: 25%">
+    <div class="border border-dark rounded-circle d-inline-block" @click="$emit('sizeSelect', pizzaSize)" style="height: 10rem; width: 10rem; text-align: center; padding-top: 20%">
       {{ this.pizzaSize }}
     </div>
   </div>
@@ -24,7 +24,7 @@ name: "PizzaSize",
   font-size: 24pt;
 }
 .pizzaSize :hover {
-  background-color: darkgoldenrod;
+  background-color: orangered;
   cursor: pointer;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h3 class="centerHeader">Currently selected: {{this.selectedSize}}</h3>
+  <h3 class="centerHeader mx-auto">Currently selected: {{this.selectedSize}}</h3>
     <div class="row">
       <div class="col-md-1"></div>
       <pizza-size class="col-3 p-2" v-for="(size, s) in sizes"
@@ -39,7 +39,7 @@
   </div>
 
   <router-link to="/cart">
-    <button @click="confirmPizza(), $emit('addPizza', pizza)" class="checkout btn btn-success">Confirm & Add <span class="badge bg-secondary"></span></button>
+    <button @click="confirmPizza(), $emit('addPizza', pizza)" class="checkout ml-auto mr-auto btn btn-success">Confirm & Add</button>
   </router-link>
 </div>
 </template>

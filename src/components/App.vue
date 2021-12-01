@@ -15,19 +15,24 @@
               <router-link to="/cart">Cart <span class="badge bg-light">{{myCart.length}}</span> </router-link>
             </li>
             <li class="nav-item col-lg-2 p-2">
-              <a class="nav-link disabled">Order</a>
+              <router-link to="/order">Order</router-link>
             </li>
             <li class="nav-item col-lg-2 p-2">
-              <a class="nav-link disabled">Contact</a>
+              <router-link to="/contact">Contact</router-link>
             </li>
           </ul>
 
 
     </nav><br>
 <!--    //Pass once, rename to be the same-->
-    <router-view v-on:passToApp="myCart.addItem($event)"
-                 v-on:addPizza="myCart.addItem($event)"
-                 :my-cart="myCart" :cart="myCart"></router-view>
+    <router-view v-on:passToApp="myCart.addItem($event),myTotal()"
+                 v-on:addPizza="myCart.addItem($event), myTotal()"
+                 v-on:removeItem="myCart.removeItem($event), myTotal()"
+                 v-on:calcTotal="myTotal"
+                 :my-cart="myCart"
+                 :total = total
+
+    ></router-view>
 <!--    <Home></Home>-->
 <!--    <Menu ></Menu>-->
 
@@ -52,11 +57,20 @@ export default {
 
   },
   methods : {
+    myTotal() {
+      this.total = 0;
+      this.myCart.forEach((item) => {
+        this.total += item.price;
 
+        console.log('price', item.price);
+        console.log('total', this.total);
+      } )
+    }
   },
   data() {
     return {
-      myCart : new Cart()
+      myCart : new Cart(),
+      total : 0,
     }
   }
 }

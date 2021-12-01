@@ -17,7 +17,7 @@
 
   <div class="cartHeaders row border-top border-dark ">
     <div class="p-2 col-md-5">Total:</div>
-    <div class="p-2 col-md-5">${{total.toFixed(2)}}</div>
+    <div class="p-2 col-md-5">${{this.total.toFixed(2)}}</div>
     <div class="p-2 col-md-2"></div>
   </div>
   <router-link to="/cart">
