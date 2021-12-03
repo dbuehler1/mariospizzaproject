@@ -1,5 +1,6 @@
 function Order(name){
     const STATUSES = {PENDING: 'PENDING', PREP: 'PREP', BAKE: 'BAKE', READY: 'READY'}
+    this.customerId = '';
     this.orderName = name;
     this.OItems = [];
 
@@ -41,12 +42,14 @@ function Order(name){
     //     return this;
     // }
 
-    // OrderItems.toFirestore = function() {
-    //     return {
-    //         items: OrderItems,
-    //         CustomerId : 1,
-    //     }
-    // }
+    this.toFirestore = function() {
+        return {
+            status : this.status,
+            customerName: this.orderName,
+            items: this.OItems.map(item => item.toFirestore()),
+            CustomerId : 1,
+        }
+    }
     // return OrderItems;
 }
 Order.collectionName = 'orders'

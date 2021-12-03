@@ -25,7 +25,7 @@
           <h4>Item Option</h4>
         </div>
       </div>
-      <order-items v-for="(item, i) in currentOrder.OItems"
+      <order-items v-for="(item, i) in currentOrder.items"
                    :item="item"
                    :key="i">
       </order-items>
@@ -59,11 +59,12 @@
 <script>
 import OrderItems from "@/components/BackEndOrder/OrderItems";
 import OrderList from "@/components/BackEndOrder/OrderList";
+import {db} from "@/vue-models";
 export default {
 name: "BackEndOrderPage",
   components: {OrderList, OrderItems},
   props : {
-    orders : Array,
+    // orders : Array,
   },
   methods : {
     selectOrder(order) {
@@ -73,9 +74,13 @@ name: "BackEndOrderPage",
 
     }
   },
+  firestore : {
+    orders: db.collection("orders")
+  },
   data() {
     return {
-      currentOrder : Object,
+      currentOrder : {},
+      orders : [],
     }
   }
 }

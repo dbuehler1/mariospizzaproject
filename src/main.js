@@ -8,7 +8,9 @@ import PizzaCreatorPage from "@/components/PizzaCreatorPage/PizzaCreatorPage";
 import OrderPage from "@/components/OrderPage/OrderPage";
 import BackEndOrderPage from "@/components/BackEndOrder/BackEndOrderPage";
 import ContactPage from "@/components/ContactPage/ContactPage";
-// import VueFire from 'vuefire'
+import LoginPage from "@/components/LoginPage/LoginPage";
+import {firestorePlugin} from 'vuefire'
+import CreateAccount from "@/components/LoginPage/CreateAccount";
 // import firebase from 'firebase/app'
 // import 'firebase/firestore'
 
@@ -20,14 +22,16 @@ const routes = [
   {path: '/pizzas', component: PizzaCreatorPage, props: true},
   {path: '/order', component: OrderPage, props: true},
   {path: '/backEndOrder', component: BackEndOrderPage, props: true},
-  {path: '/contact', component: ContactPage}
+  {path: '/contact', component: ContactPage},
+  {path: '/login', component: LoginPage},
+  {path: '/createAccount', component: CreateAccount}
 
 ]
 Vue.use(VueRouter);
 const router = new VueRouter({
   routes,
 })
-// Vue.use(VueFire)
+Vue.use(firestorePlugin)
 //
 // firebase.initializeApp({
 //   projectId: 'mariotest-58ee4',
