@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import SpecialtyItem from "@/components/SpecialtyItem";
+import SpecialtyItem from "@/components/HomePage/SpecialtyItem";
 export default {
 name: "Home",
   components: {SpecialtyItem}

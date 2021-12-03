@@ -30,7 +30,7 @@
 
 <script>
 // import Cart from "@/vue-models/Cart";
-import CartListItem from "@/components/CartListItem";
+import CartListItem from "@/components/MenuPage/CartListItem";
 export default {
 name: "CartList",
   components: {CartListItem},

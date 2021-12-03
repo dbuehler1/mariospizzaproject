@@ -36,9 +36,9 @@
 
 <script>
 import Menu from "@/vue-models/Menu";
-import MenuItem from "@/components/MenuItem";
+import MenuItem from "@/components/MenuPage/MenuItem";
 import {MenuItems} from "@/vue-models/MenuItems.js";
-import CartList from "@/components/CartList";
+import CartList from "@/components/MenuPage/CartList";
 
 export default {
 name: "Menu",

@@ -45,9 +45,9 @@
 </template>
 
 <script>
-import PizzaSize from "@/components/PizzaSize";
-import PizzaToppings from "@/components/PIzzaToppings";
-import ToppingCart from "@/components/ToppingCart";
+import PizzaSize from "@/components/PizzaCreatorPage/PizzaSize";
+import PizzaToppings from "@/components/PizzaCreatorPage/PIzzaToppings";
+import ToppingCart from "@/components/PizzaCreatorPage/ToppingCart";
 import {MenuItems} from "@/vue-models/MenuItems";
 export default {
 name: "PizzaCreatorPage",

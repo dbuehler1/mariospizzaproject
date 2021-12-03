@@ -39,7 +39,7 @@
 // import {OrderItem} from '@/vue-models/OrderItem';
 // import {OrderItem} from "@/vue-models/OrderItem";
 
-import OptionsRadios from "@/components/optionsRadios";
+import OptionsRadios from "@/components/MenuPage/optionsRadios";
 export default {
 
 name: "MenuItem",

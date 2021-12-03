@@ -13,6 +13,14 @@ function Cart(){
     cart.setSelectedOption = function(item, option) {
         cart[cart.indexOf(item)].selectedOption = option;
     }
+
+    // cart.toFirestore = function() {
+    //     return {
+    //         items: cart,
+    //         CustomerId : 1,
+    //     }
+    // }
     return cart;
 }
+Cart.collectionName = 'orderItems'
 export default Cart;

@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
-import App from './components/App.vue'
-import Home from './components/Home'
-import Menu from "@/components/Menu";
-import CartPage from "@/components/CartPage";
-import PizzaCreatorPage from "@/components/PizzaCreatorPage";
-import OrderPage from "@/components/OrderPage";
-import BackEndOrderPage from "@/components/BackEndOrderPage";
-import ContactPage from "@/components/ContactPage";
+import App from './components/SharedPage/App.vue'
+import Home from './components/HomePage/Home'
+import Menu from "@/components/MenuPage/Menu";
+import CartPage from "@/components/CartPage/CartPage";
+import PizzaCreatorPage from "@/components/PizzaCreatorPage/PizzaCreatorPage";
+import OrderPage from "@/components/OrderPage/OrderPage";
+import BackEndOrderPage from "@/components/BackEndOrder/BackEndOrderPage";
+import ContactPage from "@/components/ContactPage/ContactPage";
+// import VueFire from 'vuefire'
+// import firebase from 'firebase/app'
+// import 'firebase/firestore'
 
 const routes = [
   // {path: '/', component: App},
@@ -24,6 +27,13 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   routes,
 })
+// Vue.use(VueFire)
+//
+// firebase.initializeApp({
+//   projectId: 'mariotest-58ee4',
+//   databaseURL: 'https://mariotest-58ee4-default-rtdb.firebaseio.com'
+// })
+
 
 Vue.config.productionTip = false
 
@@ -32,3 +42,4 @@ new Vue({
   el:'#app',
   router,
 })
+// export const db = firebase.firestore()
