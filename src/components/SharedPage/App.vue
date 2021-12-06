@@ -35,11 +35,9 @@
                  v-on:removeItem="myCart.removeItem($event), myTotal()"
                  v-on:calcTotal="myTotal"
                  v-on:addOrder="addOrder($event)"
-
-
+                 v-on:signInEmail="Email=$event"
+                 :Email="Email"
                  :authUser="this.authUser"
-                 :orders="orders"
-                 :currentOrder="orders[0]"
                  :my-cart="myCart"
                  :total = total
 
@@ -110,9 +108,9 @@ export default {
       authUser: null,
       // testOrder : new Order(this.myCart),
       total : 0,
-      orders : [],
       order : new Order(''),
       signedIn : false,
+      Email : '',
     }
   },
   created: function() {

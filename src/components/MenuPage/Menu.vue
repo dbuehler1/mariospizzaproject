@@ -4,16 +4,12 @@
       <h2 class="sectionHeader bg-warning p-3">Menu</h2>
       <div class="pr-3">
         <div class="row border border-dark p-2">
-
-
           <menu-item class="col-3 p-2" v-for="(item, i) in menu"
                      v-on:passToMenu="$emit('passToApp', $event)"
                      :item="item"
                      :authUser = authUser
                      :key="i"
           ></menu-item>
-
-
         </div>
       </div>
 

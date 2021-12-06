@@ -13,7 +13,7 @@
 
         <br>
 
-          <button class="btn btn-success float-right" @click="login">Sign In</button>
+          <button class="btn btn-success float-right" @click="$emit('signInEmail' , Email); login()">Sign In</button>
 
         <router-link to="/createAccount">
           <button class="btn btn-secondary float-right">Create Account</button>

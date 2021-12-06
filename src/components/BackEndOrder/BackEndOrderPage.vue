@@ -1,14 +1,14 @@
-<template><div>
+<template><div >
   <h2 class="pl-5" v-if="authUser === null">Oops! Nothing to See Here!</h2>
 <div v-if="(this.orders.length > 0) && (authUser != null)">
 
   <div class="row">
     <div class="col-md-8">
       <div class="row Statuses">
-        <div class="col-md-3 border border-dark" @click="currentOrder.setPending()" v-bind:class="{'bg-success text-light border border-dark': currentOrder.status==='PENDING'}">Pending</div>
-        <div class="col-md-3 border border-dark" @click="currentOrder.setPrep()" v-bind:class="{'bg-success text-light border border-dark': currentOrder.status==='PREP'}">Prep</div>
-        <div class="col-md-3 border border-dark" @click="currentOrder.setBake()" v-bind:class="{'bg-success text-light border border-dark': currentOrder.status==='BAKE'}">Bake</div>
-        <div class="col-md-3 border border-dark" @click="currentOrder.setReady()" v-bind:class="{'bg-success text-light border border-dark': currentOrder.status==='READY'}">Ready</div>
+        <div class="col-md-3 border border-dark" @click="setPending" v-bind:class="{'bg-success text-light border border-dark': currentOrder.status==='PENDING'}">Pending</div>
+        <div class="col-md-3 border border-dark" @click="setPrep" v-bind:class="{'bg-success text-light border border-dark': currentOrder.status==='PREP'}">Prep</div>
+        <div class="col-md-3 border border-dark" @click="setBake" v-bind:class="{'bg-success text-light border border-dark': currentOrder.status==='BAKE'}">Bake</div>
+        <div class="col-md-3 border border-dark" @click="setReady" v-bind:class="{'bg-success text-light border border-dark': currentOrder.status==='READY'}">Ready</div>
       </div>
 
       <div class="row border border-dark OrderHeader">
@@ -42,6 +42,7 @@
         <div class="col-9 OrderHeader border border-dark"><h3>Order Name</h3></div>
         <div class="col-2 OrderHeader border border-dark"><h3>Status</h3></div>
       </div>
+      <div class="orders">
       <order-list v-for="(order, o) in orders"
                   :order="order"
                   :num="o"
@@ -49,7 +50,7 @@
                   v-on:selectOrder="selectOrder($event)"
 
       ></order-list>
-
+      </div>
     </div>
   </div>
 
@@ -73,8 +74,30 @@ name: "BackEndOrderPage",
     selectOrder(order) {
       console.log(this.currentOrder);
       console.log(order);
-      this.currentOrder = order;
+      this.currentOrder = this.orders[this.orders.indexOf(order)];
 
+    },
+    setPending() {
+      this.currentOrder.status = 'PENDING';
+      this.updateOrder();
+    },
+    setPrep() {
+      this.currentOrder.status = 'PREP';
+      this.updateOrder();
+    },
+    setBake() {
+      this.currentOrder.status = 'BAKE';
+      this.updateOrder();
+    },
+    setReady() {
+      this.currentOrder.status = 'READY';
+      this.updateOrder();
+    },
+    updateOrder() {
+      db.collection('orders').doc(this.currentOrder.id).update(this.currentOrder)
+          .catch(error => {
+            console.error(error);
+          })
     }
   },
   firestore : {
@@ -85,7 +108,7 @@ name: "BackEndOrderPage",
       currentOrder : {},
       orders : [],
     }
-  }
+  },
 }
 </script>
 
@@ -110,5 +133,9 @@ name: "BackEndOrderPage",
     font-size: 16pt;
     text-align: center;
     background-color: #ffc107;
+  }
+  .orders {
+    height: 35rem;
+    overflow: auto;
   }
 </style>

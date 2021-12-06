@@ -1,29 +1,27 @@
 <template>
   <div>
+    test text
     <h2 class="pl-5" v-if="authUser === null">Oops! Nothing to See Here!</h2>
-    <div>
-      <div class="row Statuses" v-if="this.currentOrder != null">
-      <div class="col-md-3" v-bind:class="{'bg-success text-light': this.currentOrder.status==='PENDING'}">Pending</div>
-      <div class="col-md-3" v-bind:class="{'bg-success text-light': this.currentOrder.status==='PREP'}">Prep</div>
-      <div class="col-md-3" v-bind:class="{'bg-success text-light': this.currentOrder.status==='BAKE'}">Bake</div>
-      <div class="col-md-3" v-bind:class="{'bg-success text-light': this.currentOrder.status==='READY'}">Ready</div>
-    </div>
+    <customer-order-list v-else-if="authUser.uid" :authUser="authUser"></customer-order-list>
 
-</div>
   </div>
 </template>
 
 <script>
+// import {db} from "@/vue-models";
+import CustomerOrderList from "@/components/OrderPage/CustomerOrderList";
 export default {
 name: "OrderPage",
+  components : {
+  CustomerOrderList
+  },
   props : {
-    currentOrder : Object,
+
     authUser : {required: true}
   },
-  data(){
-    return{
-      // currentStatus : 'PREP',
-    }
+
+  computed : {
+
   }
 }
 </script>

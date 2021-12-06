@@ -11,10 +11,10 @@
         <p>262.363.3600</p>
       </div>
     </div>
-    <div class="contactContent col-2 border border-dark p-3">
-      <div class="iconHolder border border-dark bg-warning"><i class="icon fas fa-phone fa-9x"></i></div>
-      <div class="iconHolder border border-dark bg-warning"><i class="icon fas fa-envelope-square fa-10x"></i></div>
-      <div class="iconHolder border border-dark bg-warning"><i class="icon fab fa-facebook-square fa-10x"></i></div>
+    <div class="contactContent col-2 border border-dark ">
+      <div class="iconHolder border border-dark bg-warning p-3"><i class="icon fas fa-phone fa-9x"></i></div>
+      <div class="iconHolder border border-dark bg-warning p-3"><i class="icon fas fa-envelope-square fa-10x"></i></div>
+      <div class="iconHolder border border-dark bg-warning p-3"><i class="icon fab fa-facebook-square fa-10x"></i></div>
     </div>
 
   </div>
@@ -33,16 +33,21 @@ name: "ContactPage"
 }
 .iconHolder {
   margin: auto;
-align-content: center;
+
   height: 15rem; width: 15rem;
+  display: flex;
+  align-content: space-between;
+  justify-content: center;
 }
 
-.iconHolder :hover {
-  background-color: lightgray;
+.iconHolder:hover {
+  border-color: lightgray;
+  background-color: lightgray !important;
   cursor: pointer;
+
+
 }
 .icon {
-align-content: center;
-  padding: 3rem;
+  padding-top: 1rem;
 }
 </style>
