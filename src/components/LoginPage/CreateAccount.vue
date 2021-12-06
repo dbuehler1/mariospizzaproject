@@ -5,12 +5,14 @@
     <div class="col-md-4">
       <h3>Create Account</h3><br>
       <div class="form-group">
-        <label for="Username">Username</label>
-        <input id="Username" v-model="Username" type="text" class="form-control"><br>
+        <label for="Username">Email</label>
+        <input id="Username" v-model="Email" type="text" class="form-control"><br>
         <label for="Password">Password</label>
-        <input id="Password" v-model="Password" type="text" class="form-control"><br><br>
-        <router-link to="/menu">
-          <button class="btn btn-success float-right" @click="createAccount, $emit('createAccount', customer)">Create Account</button>
+        <input id="Password" v-model="Password" type="password" class="form-control"><br>
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" v-model="ConfirmPassword" type="password" class="form-control"><br><br>
+        <router-link to="/login">
+          <button class="btn btn-success float-right" @click="createAccount">Create Account</button>
         </router-link>
 
       </div>
@@ -21,27 +23,45 @@
 </template>
 
 <script>
-import {db} from "@/vue-models";
-import Customer from "@/vue-models/Customer";
+// import {db} from "@/vue-models";
+// import Customer from "@/vue-models/Customer";
+import firebase from 'firebase'
 
 export default {
 name: "CreateAccount",
   data(){
     return{
-      Username : '',
+      Email : '',
       Password : '',
+      ConfirmPassword : '',
       customer : {},
     }
   },
   methods : {
     createAccount() {
-      this.customer = new Customer(this.Username, this.Password)
-      db.collection(Customer.collectionName)
-          .add(this.customer.toFirestore())
-          .then(docRef => {
-            console.log('Customer Added', docRef)
-          })
-    }
+      if(this.ConfirmPassword === this.Password){
+        firebase.auth()
+            .createUserWithEmailAndPassword(this.Email, this.Password)
+            .catch(function() {
+              // let errorCode = error.code;
+              // let errorMessage = error.message;
+            })
+        console.log('signed in as', this.Email);
+        firebase.auth()
+            .signInWithEmailAndPassword(this.Email, this.Password)
+            .catch(function(error) {
+              // let errorCode = error.code;
+              // let errorMessage = error.message;
+              console.log(error);
+            });
+      }
+      else {
+        alert('Passwords Do Not Match!');
+        console.log('Passwords Do Not Match');
+
+      }
+
+    },
   }
 }
 </script>

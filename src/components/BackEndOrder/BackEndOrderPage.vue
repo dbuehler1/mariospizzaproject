@@ -1,5 +1,6 @@
-<template>
-<div v-if="this.orders.length > 0">
+<template><div>
+  <h2 class="pl-5" v-if="authUser === null">Oops! Nothing to See Here!</h2>
+<div v-if="(this.orders.length > 0) && (authUser != null)">
 
   <div class="row">
     <div class="col-md-8">
@@ -54,6 +55,7 @@
 
 
 </div>
+</div>
 </template>
 
 <script>
@@ -65,6 +67,7 @@ name: "BackEndOrderPage",
   components: {OrderList, OrderItems},
   props : {
     // orders : Array,
+    authUser : {required: true}
   },
   methods : {
     selectOrder(order) {

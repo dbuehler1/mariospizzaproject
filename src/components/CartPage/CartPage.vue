@@ -1,6 +1,7 @@
 <template>
   <div>
-  <div class="row">
+    <h2 class="pl-5" v-if="authUser === null">Oops! Nothing to See Here!</h2>
+  <div class="row" v-if="authUser != null">
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <span v-if="myCart.length <= 0">No Items in Cart</span>
@@ -58,6 +59,7 @@ export default {
   props : {
     myCart : Array,
     total : Number,
+    authUser: {required: true},
   },
   components : {
     CartPageItem

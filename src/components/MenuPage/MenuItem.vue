@@ -5,9 +5,9 @@
     <div class="card-body">
       <div class="itemDesc" v-if="this.item.description !== 'N/A'">{{this.item.description}}</div><br><br>
 <!--      <span v-if="this.item.options[0] !== 'N/A'">{{this.item.options}}</span><br>-->
-      <div class="row" v-if="this.item.options[0] !== 'N/A'">
+      <div class="row" v-if="(this.item.options[0] !== 'N/A') && (authUser != null)">
 
-        <options-radios class="col-6" v-for="(option, o) in this.item.options"
+        <options-radios class="col-6"  v-for="(option, o) in this.item.options"
                         :item="item"
                         :option="option"
                         :identity="item.name"
@@ -25,7 +25,7 @@
       <span>Price: ${{this.item.price}}</span><br>
     </div>
 
-      <button class="btn btn-success" @click="$emit('passToMenu', item), $emit('updateTotal')">Add to Cart</button>
+      <button class="btn btn-success" v-if="this.authUser != null" @click="$emit('passToMenu', item), $emit('updateTotal')">Add to Cart</button>
 
 
   </div>
@@ -36,8 +36,7 @@
 
 
 <script>
-// import {OrderItem} from '@/vue-models/OrderItem';
-// import {OrderItem} from "@/vue-models/OrderItem";
+
 
 import OptionsRadios from "@/components/MenuPage/optionsRadios";
 export default {
@@ -46,18 +45,10 @@ name: "MenuItem",
   components: {OptionsRadios},
   props : {
     item : Object,
+    authUser : {required: true}
   },
   methods : {
-      // createOrderItem(){
-      //   var newOrderItem = new OrderItem(
-      //       this.item.name.name,
-      //       this.qty,
-      //       this.item.name.options,
-      //       this.item.name.description,
-      //       this.item.name.price)
-      //   return newOrderItem.name;
-      //
-      // }
+
   },
   data() {
     return {
@@ -74,4 +65,5 @@ name: "MenuItem",
     height: 8rem;
     overflow: auto;
   }
+
 </style>

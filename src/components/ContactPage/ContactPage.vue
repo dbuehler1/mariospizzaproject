@@ -39,7 +39,6 @@ align-content: center;
 
 .iconHolder :hover {
   background-color: lightgray;
-  color: white;
   cursor: pointer;
 }
 .icon {

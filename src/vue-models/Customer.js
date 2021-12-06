@@ -1,16 +1,12 @@
-function Customer(Username, Password){
-    this.customerId = Math.floor(Math.random() * 10000000) + 1;
-    this.username = Username;
-    this.password = Password;
+function Customer(){
+    this.CustomerId = Math.floor(Math.random() * 10000000) + 1;
+    this.Email = '';
+    this.Password = '';
 
-    this.toFirestore = function() {
-        return {
-            username : this.username,
-            password : this.password,
-            CustomerId : this.customerId,
-        }
-    }
+    // if(firebaseUser) {
+    //     this.CustomerId = firebaseUser.username
+    // }
     // return OrderItems;
 }
-Customer.collectionName = 'customers'
+
 export default Customer;

@@ -11,10 +11,10 @@
             <li class="nav-item  p-2">
               <router-link to="/menu">Menu</router-link>
             </li>
-            <li class="nav-item  p-2" v-if="signedIn === true">
+            <li class="nav-item  p-2" v-if="authUser != null">
               <router-link to="/cart">Cart <span class="badge bg-light">{{myCart.length}}</span> </router-link>
             </li>
-            <li class="nav-item  p-2" v-if="signedIn === true">
+            <li class="nav-item  p-2" v-if="authUser != null">
               <router-link to="/order">Order</router-link>
             </li>
             <li class="nav-item  p-2">
@@ -22,11 +22,11 @@
             </li>
           </ul>
 <!--      <button class="btn btn-success" @click="addOrder">Submit Order</button>-->
-      <router-link to="/login" v-if="signedIn===false">
+      <router-link to="/login" v-if="authUser === null">
         <button class="btn btn-success float-right">Sign In</button>
       </router-link>
-      <router-link to="/login" v-if="signedIn===true">
-        <button class="btn btn-danger float-right" @click="signedIn = false">Sign Out</button>
+      <router-link to="/login" v-if="authUser != null">
+        <button class="btn btn-danger float-right" @click="logOut">Sign Out</button>
       </router-link>
     </nav><br>
 <!--    //Pass once, rename to be the same-->
@@ -35,7 +35,9 @@
                  v-on:removeItem="myCart.removeItem($event), myTotal()"
                  v-on:calcTotal="myTotal"
                  v-on:addOrder="addOrder($event)"
-                 v-on:createAccount="signedIn = true"
+
+
+                 :authUser="this.authUser"
                  :orders="orders"
                  :currentOrder="orders[0]"
                  :my-cart="myCart"
@@ -45,8 +47,8 @@
 <!--    <Home></Home>-->
 <!--    <Menu ></Menu>-->
 
-
-
+    <!--                 v-on:createAccount="signedIn = true; this.loggedInCustomer = $event"-->
+<!--    v-on:signIn="signIn({$event})"-->
   </div>
 </template>
 
@@ -56,10 +58,12 @@
 // import Home from "@/components/Home";
 // import Menu from "@/components/Menu";
 import {db} from "@/vue-models";
+// import {query, where } from "firebase/firestore";
+
 
 import Cart from "@/vue-models/Cart"
 import Order from "@/vue-models/Order";
-
+import firebase from 'firebase'
 
 export default {
   name: 'App',
@@ -91,6 +95,9 @@ export default {
         console.log('order Added', docRef)
       })
     },
+    logOut() {
+      firebase.auth().signOut();
+    }
     // signIn(customerDetails){
     //   if(customerDetails.customer.username === customerDetails.username && customerDetails.customer.password === customerDetails.password){
     //       this.signedIn = true;
@@ -100,6 +107,7 @@ export default {
   data() {
     return {
       myCart : new Cart(),
+      authUser: null,
       // testOrder : new Order(this.myCart),
       total : 0,
       orders : [],
@@ -107,6 +115,18 @@ export default {
       signedIn : false,
     }
   },
+  created: function() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user) {
+        console.log('signed in as ' , user);
+        this.authUser = user;
+      }
+      else {
+       console.log('not signed in');
+       this.authUser = null;
+      }
+    })
+  }
 
 }
 </script>

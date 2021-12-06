@@ -1,9 +1,10 @@
-function MenuItems(name, options, description, price){
+function MenuItems(name, options, description, price, category){
     this.name = name;
     this.options = options;
     this.description = description;
     this.price = price;
     this.selectedOption='';
+    this.category= category;
 
     this.toFirestore = function() {
         return {
