@@ -62,7 +62,7 @@ name: "MenuItem",
 
 <style scoped>
   .itemDesc {
-    height: 8rem;
+    height: 2rem;
     overflow: auto;
   }
 
