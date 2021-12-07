@@ -1,7 +1,18 @@
 <template>
   <div class="row">
     <div class="col-lg-9">
-      <h2 class="sectionHeader bg-warning p-3">Menu</h2>
+      <div class="row">
+        <div class="col-3 bg-warning"></div>
+        <div class="col-6 bg-warning">
+          <h2 class="sectionHeader p-1">Menu</h2>
+        </div>
+        <div class="col-3 bg-warning pt-2">
+          <router-link to="/pizzas">
+            <button class="checkout btn btn-success float-right" v-if="authUser != null">Build a Pizza  <i class="fas fa-tools"></i></button>
+          </router-link>
+        </div>
+      </div>
+
       <div class="pr-3">
         <div class="row border border-dark p-2">
           <menu-item class="col-3 p-2" v-for="(item, i) in menu"
@@ -22,9 +33,7 @@
 
     </div>
     <div class="pl-3"><br><br><br><br>
-      <router-link to="/pizzas">
-        <button class=" checkout btn btn-success" v-if="authUser != null">Build a Pizza  <i class="fas fa-tools"></i></button>
-      </router-link>
+
     </div>
 
   </div>

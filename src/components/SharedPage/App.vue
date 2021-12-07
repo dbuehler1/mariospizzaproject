@@ -35,8 +35,8 @@
                  v-on:removeItem="myCart.removeItem($event), myTotal()"
                  v-on:calcTotal="myTotal"
                  v-on:addOrder="addOrder($event)"
-                 v-on:signInEmail="Email=$event"
-                 :Email="Email"
+
+
                  :authUser="this.authUser"
                  :my-cart="myCart"
                  :total = total
@@ -82,7 +82,7 @@ export default {
       } )
     },
     addOrder(name){
-      this.order = new Order(name + '');
+      this.order = new Order((name + ''), this.authUser.email);
       this.order.addItems(this.myCart);
       // this.orders.push(this.order);
       this.myCart.splice(0);
@@ -110,7 +110,7 @@ export default {
       total : 0,
       order : new Order(''),
       signedIn : false,
-      Email : '',
+
     }
   },
   created: function() {

@@ -1,8 +1,8 @@
 <template>
   <div>
-    test text
+    <h1>My Orders</h1>
     <h2 class="pl-5" v-if="authUser === null">Oops! Nothing to See Here!</h2>
-    <customer-order-list v-else-if="authUser.uid" :authUser="authUser"></customer-order-list>
+    <customer-order-list  v-else-if="authUser.uid" :authUser="authUser"></customer-order-list>
 
   </div>
 </template>
@@ -27,10 +27,5 @@ name: "OrderPage",
 </script>
 
 <style scoped>
-.Statuses {
-  text-align: center;
-  font-size: 20pt;
-  font-weight: bold;
-  background-color: #ffc107;
-}
+
 </style>

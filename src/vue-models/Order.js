@@ -1,6 +1,6 @@
-function Order(name){
+function Order(name, id){
     const STATUSES = {PENDING: 'PENDING', PREP: 'PREP', BAKE: 'BAKE', READY: 'READY'}
-    this.customerId = '';
+    this.customerId = id;
     this.orderName = name;
     this.OItems = [];
 
@@ -47,7 +47,7 @@ function Order(name){
             status : this.status,
             customerName: this.orderName,
             items: this.OItems.map(item => item.toFirestore()),
-            CustomerId : 1,
+            CustomerId : this.customerId,
         }
     }
     // return OrderItems;
