@@ -37,10 +37,17 @@
 
     </div>
   </div>
+<div class="row">
+  <div class="col-9 pt-4">
+    <div class="float-right">
+      <router-link to="/cart">
+        <button @click="confirmPizza(), $emit('addPizza', pizza)" class="checkout ml-auto mr-auto btn btn-success">Confirm & Add</button>
+      </router-link>
+    </div>
+  </div>
+  <div class="col-3"></div>
+</div>
 
-  <router-link to="/cart">
-    <button @click="confirmPizza(), $emit('addPizza', pizza)" class="checkout ml-auto mr-auto btn btn-success">Confirm & Add</button>
-  </router-link>
 </div>
 </template>
 
@@ -72,7 +79,7 @@ name: "PizzaCreatorPage",
     return {
       pizza : new MenuItems('Pizza','','',15.25),
       sizes : ['Small', 'Medium', 'Large', 'Extra Large', 'Monster'],
-      selectedSize : '',
+      selectedSize : 'Small',
       selectedToppings : [],
       availableToppings : ['Sausage', 'Pepperoni', 'Canadian Bacon', 'Chicken', 'Ham', 'Bacon',
                           'Basil', 'Spinach', 'Mushrooms(Fresh)', 'Mushrooms(Canned)', 'Black Olives',
