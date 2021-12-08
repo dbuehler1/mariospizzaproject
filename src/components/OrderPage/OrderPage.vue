@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>My Orders</h1>
+
     <h2 class="pl-5" v-if="authUser === null">Oops! Nothing to See Here!</h2>
     <customer-order-list  v-else-if="authUser.uid" :authUser="authUser"></customer-order-list>
 

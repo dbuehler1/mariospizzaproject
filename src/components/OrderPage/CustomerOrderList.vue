@@ -1,5 +1,6 @@
 <template>
-  <div >
+  <div>
+    <h1>My Orders</h1>
   <div class="border border-dark" v-for="order in orders" :key="order.id">
     <h3 class="bg-warning">Pickup Alias: {{order.customerName}}</h3>
 
