@@ -18,7 +18,8 @@
           </div>
         </div>
         <div class="col-6 bg-warning">
-          <h2 class="sectionHeader p-1">{{ category }}</h2>
+          <h2 class="sectionHeader p-1" v-if="category === ''">Select a Category</h2>
+          <h2 class="sectionHeader p-1" v-if="category !== ''">{{ category }}</h2>
         </div>
         <div class="col-3 bg-warning pt-2">
           <router-link to="/pizzas">
@@ -76,7 +77,7 @@ name: "Menu",
   },
   data() {
     return {
-      category : '',
+      category : 'All',
       //stores all menu items on the page with a name, selectable options, price and category
       menu: new Menu()
           //Appetizers
