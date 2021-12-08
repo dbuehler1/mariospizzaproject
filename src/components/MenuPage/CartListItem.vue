@@ -1,5 +1,5 @@
 <template>
-<div class="row">
+<div class="row pl-4">
   <div class="col-md-5">{{this.item.name}}</div>
 
   <div class="col-md-5">${{this.item.price}}</div>

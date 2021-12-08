@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="card">
-      <div class="card-header">Specialty Item</div>
+      <div class="card-header">{{ name }}</div>
       <div class="card-body">
-        Specialty Item Description
+        {{ desc }}
       </div>
     </div>
   </div>
@@ -12,7 +12,11 @@
 
 <script>
 export default {
-name: "SpecialtyItem"
+name: "SpecialtyItem",
+  props : {
+    name : String,
+    desc : String
+  }
 }
 </script>
 

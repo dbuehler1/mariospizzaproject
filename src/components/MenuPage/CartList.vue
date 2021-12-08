@@ -1,7 +1,7 @@
 <template>
 <div class=" border border-dark">
 
-  <div class="cartHeaders row">
+  <div class="pl-4 cartHeaders row">
     <div class="p-2 col-md-5">Name</div>
     <div class="p-2 col-md-5">Price</div>
     <div class="p-2 col-md-2"></div>
@@ -16,16 +16,19 @@
     ></cart-list-item>
   </div>
 
-  <div class="cartHeaders row border-top border-dark ">
-    <div class="p-2 col-md-5">Total:</div>
-    <div class="p-2 col-md-5">${{this.total.toFixed(2)}}</div>
-    <div class="p-2 col-md-2"></div>
+  <div class="pl-4 cartHeaders row  ">
+    <div class="p-2 col-md-5 border-top border-dark">Total:</div>
+    <div class="p-2 col-md-5 border-top border-dark">${{this.total.toFixed(2)}}</div>
+    <div class="p-2 col-md-2 border-top border-dark"></div>
   </div>
   <!--Redirects user to the cart page-->
-  <router-link to="/cart">
-  <button class="checkout btn btn-success">Checkout <span class="badge bg-secondary">{{myCart.length}}</span></button>
-  </router-link>
-  <br>
+  <div class="pr-3">
+    <router-link to="/cart">
+      <button class="checkout btn btn-success">Checkout <span class="badge bg-secondary">{{myCart.length}}</span></button>
+    </router-link>
+    <br><br><br>
+  </div>
+
 
 </div>
 </template>
@@ -40,12 +43,6 @@ name: "CartList",
       myCart : Array,
       total : Number,
   },
-  // data() {
-  //   return {
-  //     total : this.myCart.forEach(p => p.price + this.total),
-  //
-  //   }
-  // }
 
 }
 </script>
