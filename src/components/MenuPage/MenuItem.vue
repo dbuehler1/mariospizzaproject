@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-if="selectedCategory === 'All' || selectedCategory === item.category">
   <div class="card border border-dark">
     <div class="card-header "><h4>{{this.item.name}}</h4></div>
     <div class="card-body">
@@ -45,7 +45,8 @@ name: "MenuItem",
   components: {OptionsRadios},
   props : {
     item : Object,
-    authUser : {required: true}
+    authUser : {required: true},
+    selectedCategory : String,
   },
   methods : {
 
