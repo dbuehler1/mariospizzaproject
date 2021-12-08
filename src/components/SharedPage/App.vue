@@ -2,8 +2,7 @@
   <div>
     <h1 class="bg-warning">Mario's Natural Roman Pizza & Pasta</h1>
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
-
-
+      <!--Navigation-->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item p-2">
               <router-link to="/home">Home</router-link>
@@ -20,8 +19,10 @@
             <li class="nav-item  p-2">
               <router-link to="/contact">Contact</router-link>
             </li>
+            <li class="nav-item  p-2" v-if="authUser != null">
+              <router-link to="/backEndOrder">Order Manager</router-link>
+            </li>
           </ul>
-<!--      <button class="btn btn-success" @click="addOrder">Submit Order</button>-->
       <router-link to="/login" v-if="authUser === null">
         <button class="btn btn-success float-right">Sign In</button>
       </router-link>
@@ -29,7 +30,6 @@
         <button class="btn btn-danger float-right" @click="logOut">Sign Out</button>
       </router-link>
     </nav><br>
-<!--    //Pass once, rename to be the same-->
     <router-view v-on:passToApp="myCart.addItem($event),myTotal()"
                  v-on:addPizza="myCart.addItem($event), myTotal()"
                  v-on:removeItem="myCart.removeItem($event), myTotal()"
@@ -42,22 +42,11 @@
                  :total = total
 
     ></router-view>
-<!--    <Home></Home>-->
-<!--    <Menu ></Menu>-->
-
-    <!--                 v-on:createAccount="signedIn = true; this.loggedInCustomer = $event"-->
-<!--    v-on:signIn="signIn({$event})"-->
   </div>
 </template>
-
 <script>
 
-
-// import Home from "@/components/Home";
-// import Menu from "@/components/Menu";
 import {db} from "@/vue-models";
-// import {query, where } from "firebase/firestore";
-
 
 import Cart from "@/vue-models/Cart"
 import Order from "@/vue-models/Order";
@@ -81,41 +70,39 @@ export default {
         console.log('total', this.total);
       } )
     },
+    //Add an order and store name and email of signed in user with the order
     addOrder(name){
       this.order = new Order((name + ''), this.authUser.email);
       this.order.addItems(this.myCart);
-      // this.orders.push(this.order);
       this.myCart.splice(0);
-      // this.testOrder.setPrep();
+      //push order with email to the collection 'orders' in firebase
       db.collection(Order.collectionName)
       .add(this.order.toFirestore())
       .then(docRef => {
         console.log('order Added', docRef)
       })
     },
+    //Log out user
     logOut() {
       firebase.auth().signOut();
     }
-    // signIn(customerDetails){
-    //   if(customerDetails.customer.username === customerDetails.username && customerDetails.customer.password === customerDetails.password){
-    //       this.signedIn = true;
-    //   }
-    // },
   },
   data() {
     return {
+      //myCart stores cart on page
       myCart : new Cart(),
+      //authUser stores the logged in user
       authUser: null,
-      // testOrder : new Order(this.myCart),
+      //total stores cart total
       total : 0,
+      //order stores a new blank order
       order : new Order(''),
-      signedIn : false,
-
     }
   },
   created: function() {
     firebase.auth().onAuthStateChanged((user) => {
       if(user) {
+        //assigns logged in user
         console.log('signed in as ' , user);
         this.authUser = user;
       }
@@ -125,25 +112,10 @@ export default {
       }
     })
   }
-
 }
 </script>
-
 <style>
-#app {
-  /*font-family: Avenir, Helvetica, Arial, sans-serif;*/
-  /*-webkit-font-smoothing: antialiased;*/
-  /*-moz-osx-font-smoothing: grayscale;*/
-  /*text-align: center;*/
-  /*color: #2c3e50;*/
-  /*margin-top: 60px;*/
-}
-
 h1 {
   text-align: center;
 }
-.cartComp {
-  padding: 2rem;
-}
-
 </style>

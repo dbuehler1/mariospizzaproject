@@ -60,16 +60,16 @@ export default {
 name: "PizzaCreatorPage",
   components: {ToppingCart, PizzaToppings, PizzaSize},
   methods : {
-      test(){
-        console.log(this.selectedSize);
-      },
+    //add topping to pizza
     addTopping(newTopping){
         this.selectedToppings.push(newTopping);
         console.log(this.selectedToppings);
     },
+    //removes topping from pizza
     removeTopping(topping) {
         this.selectedToppings.splice(topping, 1);
     },
+    //brings together all toppings into a string to store in the menuItem
     confirmPizza(){
         this.pizza.description = this.selectedToppings.join('/')
         this.pizza.selectedOption = this.selectedSize;
@@ -77,10 +77,15 @@ name: "PizzaCreatorPage",
   },
   data() {
     return {
+      //creates a pizza template
       pizza : new MenuItems('Pizza','','',15.25),
+      //stores all available sizes
       sizes : ['Small', 'Medium', 'Large', 'Extra Large', 'Monster'],
+      //stores the size of pizza that the user selected
       selectedSize : 'Small',
+      //stores the selected toppings from the user
       selectedToppings : [],
+      //lists all available toppings for pizzas
       availableToppings : ['Sausage', 'Pepperoni', 'Canadian Bacon', 'Chicken', 'Ham', 'Bacon',
                           'Basil', 'Spinach', 'Mushrooms(Fresh)', 'Mushrooms(Canned)', 'Black Olives',
                           'Green Pepper', 'Onion', 'Broccoli', 'Tomatoes', 'Pineapple', 'Artichoke',

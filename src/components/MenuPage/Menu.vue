@@ -61,6 +61,7 @@ name: "Menu",
   },
   data() {
     return {
+      //stores all menu items on the page with a name, selectable options, price and category
       menu: new Menu()
           .addItem(new MenuItems('Garlic Bread', ['N/A'], '', 3.25, 'Appetizer'))
           .addItem(new MenuItems('Cheese Garlic Bread', ['N/A'], '', 4.25, 'Appetizer'))
@@ -78,20 +79,6 @@ name: "Menu",
           .addItem(new MenuItems('Drum Sticks', ['Buffalo Sauce', 'BBQ Sauce'], '', 5.95, 'Appetizer'))
           .addItem(new MenuItems('Garlic Bread', ['marinara', 'other'], 'Pizza ipsum dolor amet in pork platter garlic, sint buffalo sauce spinach non garlic sauce anim pizza roll. White pizza bacon & tomato bbq rib parmesan large Chicago style. Qui officia platter, chicken chicken wing aliqua red onions fugiat deserunt sausage bacon & tomato reprehenderit green bell peppers hawaiian.', 6.75, 'Appetizer'))
           .addItem(new MenuItems('Garlic Bread', ['marinara', 'other'], 'Pizza ipsum dolor amet in pork platter garlic, sint buffalo sauce spinach non garlic sauce anim pizza roll. White pizza bacon & tomato bbq rib parmesan large Chicago style. Qui officia platter, chicken chicken wing aliqua red onions fugiat deserunt sausage bacon & tomato reprehenderit green bell peppers hawaiian.', 6.75, 'Appetizer'))
-
-          // .addItem(new MenuItems('test three', 'N/A', 'N/A', 5.75))
-          // .addItem(new MenuItems('test four', 'N/A', 'N/A', 2.55))
-          // .addItem(new MenuItems('test five', 'N/A', 'N/A', 1.25))
-          // .addItem(new MenuItems('test six', 'N/A', 'N/A', 9.45))
-          // .addItem(new MenuItems('test seven', 'N/A', 'N/A', 4.25))
-          // .addItem(new MenuItems('test eight', 'N/A', 'N/A', 5.15))
-          // .addItem(new MenuItems('test nine', 'N/A', 'N/A', 6.30))
-          // .addItem(new MenuItems('test ten', 'N/A', 'N/A', 9.25))
-          // .addItem(new MenuItems('test eleven', 'N/A', 'N/A', 15.25)),
-
-
-
-          // .addItem(new MenuItems('Garlic Bread', 'N/A', 'N/A', 3.25))
     }
   }
 }
@@ -99,7 +86,6 @@ name: "Menu",
 
 <style scoped>
 .sectionHeader {
-
   text-align: center;
 }
 </style>

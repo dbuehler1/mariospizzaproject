@@ -32,12 +32,6 @@ const router = new VueRouter({
   routes,
 })
 Vue.use(firestorePlugin)
-//
-// firebase.initializeApp({
-//   projectId: 'mariotest-58ee4',
-//   databaseURL: 'https://mariotest-58ee4-default-rtdb.firebaseio.com'
-// })
-
 
 Vue.config.productionTip = false
 
@@ -46,4 +40,4 @@ new Vue({
   el:'#app',
   router,
 })
-// export const db = firebase.firestore()
+

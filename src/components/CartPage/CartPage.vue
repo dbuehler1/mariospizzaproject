@@ -12,6 +12,7 @@
         <div class="col-2 border border-dark"><h4>Price</h4></div>
         <div class="col-1"></div>
       </div>
+      <!--Lists out all cart items-->
       <cart-page-item v-for="(item, i) in myCart"
                       v-on:removeItem="$emit('removeItem', $event)"
                       :item="item"
@@ -36,10 +37,12 @@
           <div class="form-group">
             <input type="text" v-model="CustomerName" class="form-control">
           </div>
+          <!--Lists out all totals for the order-->
           Subtotal: ${{this.total.toFixed(2)}} <br>
           Tax: ${{(this.total * .05).toFixed(2)}}<br>
           Total: ${{(this.total + this.total * .05).toFixed(2)}}<br>
         </div><br><br><br><br><br><br><br><br>
+        <!--Submits order by emitting the customer name up to the app and calling a method to add an order-->
         <router-link to="/order">
           <button class="btn btn-success float-right" v-if="myCart.length >= 1" @click="$emit('addOrder', CustomerName)">Submit Order</button>
         </router-link>

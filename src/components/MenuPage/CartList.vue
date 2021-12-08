@@ -7,6 +7,7 @@
     <div class="p-2 col-md-2"></div>
   </div>
   <div class="myCart">
+    <!--Displays a mini cart with limited information to update the user about the cost of their order-->
     <cart-list-item class="pt-2 pb-2 pl-0 border-top border-dark" v-for="(item, i) in myCart"
                     v-on:passToCart="$emit('removeCartItem', $event)"
                     v-on:deletedItemPrice="$emit('deletedItemPrice')"
@@ -20,6 +21,7 @@
     <div class="p-2 col-md-5">${{this.total.toFixed(2)}}</div>
     <div class="p-2 col-md-2"></div>
   </div>
+  <!--Redirects user to the cart page-->
   <router-link to="/cart">
   <button class="checkout btn btn-success">Checkout <span class="badge bg-secondary">{{myCart.length}}</span></button>
   </router-link>

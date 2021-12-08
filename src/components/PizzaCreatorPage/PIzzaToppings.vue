@@ -1,4 +1,5 @@
 <template>
+  <!--Lists out a pizza topping-->
   <div class="toppings col-md-3">
     <div class="pl-5 " @click="$emit('addATopping', topping)">
       {{this.topping}}

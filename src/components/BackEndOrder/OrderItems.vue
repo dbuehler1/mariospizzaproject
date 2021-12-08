@@ -1,5 +1,6 @@
 <template>
 <div class="row pb-4 border border-dark cartListItem">
+
   <div class="col-md-4">
     {{item.name}}
   </div>

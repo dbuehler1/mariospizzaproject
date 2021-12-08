@@ -11,36 +11,7 @@ function Order(name, id){
         } )
         console.log(this.OItems);
     }
-    // decorating/adding functionality to an existing object
     this.status = STATUSES.PENDING;
-
-    // methods
-    this.setPending = function(){
-        this.status = STATUSES.PENDING;
-    }
-
-    this.setPrep = function(){
-        this.status = STATUSES.PREP;
-    }
-
-    this.setBake = function(){
-        this.status = STATUSES.BAKE;
-    }
-
-    this.setReady = function(){
-        this.status = STATUSES.READY;
-    }
-
-
-
-    // OrderItems.addItem = function(item){
-    //     this.push(item);
-    //     return this;
-    // }
-    // OrderItems.removeItem = function(item) {
-    //     OrderItems.splice(OrderItems.indexOf(item), 1);
-    //     return this;
-    // }
 
     this.toFirestore = function() {
         return {
@@ -50,7 +21,6 @@ function Order(name, id){
             CustomerId : this.customerId,
         }
     }
-    // return OrderItems;
 }
 Order.collectionName = 'orders'
 export default Order;

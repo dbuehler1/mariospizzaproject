@@ -33,15 +33,5 @@ name: "Home",
 </script>
 
 <style scoped>
-.specialties {
-  /*padding: 1rem;*/
-  /*border-width: thin 10px;*/
-  /*border-color: black;*/
-}
-.homePage {
-  /*padding: 1rem;*/
-}
-div {
 
-}
 </style>
